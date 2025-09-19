@@ -1,0 +1,62 @@
+'use client';
+
+import React from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+
+const CompanyValues = () => {
+
+  const { scrollYProgress } = useScroll(); // Track the scroll progress
+  // const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05]); // Apply zoom scale based on scroll
+  return (
+    <section
+      id="services"
+      className="bg-white px-10 py-20 w-full flex flex-wrap justify-center gap-12"
+    >
+
+      {/* MISSION CARD */}
+      <motion.div
+        initial={{ opacity: 0, rotate: -20, y: 50 }}
+        whileInView={{ opacity: 1, rotate: 0, y: 0 }}
+        transition={{ duration: 1, ease: "easeOut", type: "spring"}}
+        viewport={{ once: false}}
+        className="relative bg-white shadow-md rounded-xl p-8 w-full md:w-[40%] min-h-[300px] z-10"
+      >
+        <div className="absolute top-0 right-0">
+          <div className="ribbon bg-pink text-white font-semibold text-xs px-4 py-1 transform rotate-45 translate-x-6 -translate-y-2">
+            MISSION
+          </div>
+        </div>
+        <h2 className="text-4xl font-semibold text-pink">
+          MISSI<span className="text-black">ON</span>
+        </h2>
+        <p className="mt-4 text-lg leading-relaxed text-black">
+          To deliver and exceed the agreed service level with our customers with excellent and quality assurance.
+        </p>
+      </motion.div>
+
+      {/* VISION CARD */}
+      <motion.div
+        initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 1, rotate: 0, x: 0 }}
+        transition={{ delay: 1, duration: 1.5, ease: "easeOut", type: "spring", stiffness: 100}}
+        viewport={{ once: false}}
+        className="relative bg-white  shadow-md rounded-xl p-8 w-full md:w-[40%] min-h-[300px] z-0"
+      >
+        <div className="absolute top-0 right-0">
+          <div className="ribbon bg-pink text-white font-semibold text-xs px-4 py-1 transform rotate-45 translate-x-6 -translate-y-2">
+            VISION
+          </div>
+        </div>
+        <h2 className="text-4xl font-semibold text-pink">
+          VISI<span className="text-black">ON</span>
+        </h2>
+        <p className="mt-4 text-lg leading-relaxed text-black">
+          To become recognized as a benchmark in delivering excellent quality advertising solutions to clients by continuous improvement, research, and innovation in the industry.
+        </p>
+      </motion.div>
+
+    </section>
+    
+  );
+};
+export default CompanyValues;
