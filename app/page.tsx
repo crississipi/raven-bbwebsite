@@ -7,13 +7,14 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import Footer from "./components/Footer";
-import AboutPage from "./components/AboutPage";
+
 import { useSearchParams } from "next/navigation";
+
+import WhyChooseBurnboxPage from "./components/WhyChooseBurnBox";
 
 const Maps = dynamic(() => import('./components/Maps'), {
   ssr: false
 });
-
 
 export default function Home() {
   const [videoVisible, isVideoVisible] = useState(true);
@@ -62,9 +63,12 @@ export default function Home() {
       </AnimatePresence>
      
       <CardCarousel />
-      <div className="h-auto w-full bg-white flex flex-col">
-         <AboutPage/>
-        
+      
+      <div id="why-choose-burnbox">
+      <WhyChooseBurnboxPage/>
+      </div>
+
+      <div  className="h-auto w-full bg-white flex flex-col">
         <ServicesDisplay searchValue={searchValue} />
       </div>
       <Maps />  

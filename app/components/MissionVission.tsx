@@ -3,7 +3,7 @@ import React from 'react'
 
 const MissionVission = () => {
   return (
-    <section className='bg-[#333] z-[1] mt-40 w-full h-40vh' style={{
+    <section  id='mission-and-vision' className='bg-[#333] z-[1] mt-40 w-full h-40vh' style={{
     backgroundImage: "url('/missionbg.png')",
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -12,7 +12,6 @@ const MissionVission = () => {
   }}>
         <div className=' max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-28 mt-80'>
     {/* mission and vission cards */}
-
     {/* mission */}
       <motion.div
         initial={{opacity: 0, y: 30}}
@@ -39,11 +38,10 @@ const MissionVission = () => {
         >
           {/* Floating Image */}
           <img
-            src="/vissionimages.png"
+            src="/visionimages.png"
             alt="Vision"
             className="absolute top-20 right-0 -translate-y-full rotate-[40deg] w-[220px] h-auto object-contain z-[-1]"
           />
-
           {/* Content */}
           <h3 className="text-xl font-bold mb-2 mt-4">Our Vision</h3>
           <p className="text-2xl leading-relaxed">

@@ -14,6 +14,7 @@ const images = [
     title: 'SAmple 1',
     desc: 'Breathtaking highlands and green landscapes waiting to be explored.',
   },
+
   {
     src: '/labelstickerimg3.png',
     title: 'sample 3',

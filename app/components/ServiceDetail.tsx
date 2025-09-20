@@ -78,7 +78,6 @@ const ServiceDetail: React.FC<Props> = ({ image, title, description, features, r
   const closeModal = () => {
     setIsModalOpen(false);
   };
-
   return (
     <div className="max-w-6xl  w-full max-h-[60vh]  from-neutral-500 via-neutral-300 to-neutral-300  rounded">
       <div className="flex flex-col  md:flex-row items-center md:items-start gap-8 ">

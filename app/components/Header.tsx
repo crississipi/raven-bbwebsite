@@ -14,10 +14,7 @@ import ToolTip from './ToolTip'
 import { useRouter, useSearchParams } from 'next/navigation';
 import TooltipServices from './TooltipServices';
 import AboutTooltip from './AboutTooltip';
-
-
 // header props
-
 type HeaderProps = {
   searchValue: string;
   setSearchValue: React.Dispatch<React.SetStateAction<string>>;
@@ -27,11 +24,7 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = ({ searchValue, setSearchValue }) => {
 const [isSearchActive, setIsSearchActive] = useState(false);
-
-
 const router = useRouter()
-
-  
  const handleNavClick = (sectionId: string) => {
   if(typeof window !== 'undefined' && window.location.pathname === '/') {
     const section = document.getElementById(sectionId);
@@ -44,10 +37,7 @@ const router = useRouter()
     router.push(`/?scrollTo=${sectionId}`);
   }
  };
-
-
  const searchParams = useSearchParams();
-
  useEffect(() => {
   const scrollTo = searchParams?.get('scrollTo');
   if(scrollTo) {
@@ -71,7 +61,7 @@ const router = useRouter()
     'contact'
   ]);
   const aboutList = ['About Us', 'Mission and Vission', 'Why Choose Burnbox Printing?'];
-  const servicesList = ['signage', 'marketing collaterals', 'wallmural', 'Glass frosted sticker', 'transit adds', 'giveaways', 'other services.']
+  const servicesList = ['Signage', 'Marketing Collaterals', 'Wallmural', 'Glass frosted sticker', 'Transit adds', 'Giveaways', 'Other services.']
   const buttons = ['wallmural', 'labelsticker', 'photocanvas', 'pvclanyard']
   
   const [showToolTip, setToolTip] = useState(false)
@@ -84,7 +74,6 @@ const router = useRouter()
     return item.toLowerCase().includes(searchValue.toLowerCase())
   });
   const handleSearch = () => {
-    
     if(filteredList.length === 1) {
       const sectionId = filteredList[0].toLowerCase().replace(/\s+/g, '-');
       const section = document.getElementById(sectionId);
@@ -156,7 +145,6 @@ const handleMobileNavClick = (id: string) => {
           <AboutTooltip aboutus={aboutList}/>
         )}
           </span>
-
         <span 
         className='relative'
         onMouseEnter={() => setShowServicesTooltip(true)}

@@ -1,86 +1,40 @@
-'use client'
+import { motion } from 'framer-motion';
+import React from 'react';
+import Link from 'next/link'; // ✅ Import Next.js Link
 
-import { AnimatePresence, motion } from "framer-motion"
-import { useState } from "react"
+interface AboutTooltipProps {
+    aboutus: string[];
+}
 
-const images = [
-  {
-    src: '/labelstickerimg.png',
-    title: 'IRELAND',
-    desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, eum!',
-  },
-  {
-    src: '/labelstickerimg1.png',
-    title: 'SCOTLAND',
-    desc: 'Breathtaking highlands and green landscapes waiting to be explored.',
-  },
-  {
-    src: '/labelstickerimg3.png',
-    title: 'NORWAY',
-    desc: 'Fjords, mountains, and northern lights in one magical destination.',
-  },
-]
-
-export default function Labelpage() {
-  const [selectedImg, setSelectedImg] = useState<number | null>(null)
+const AboutTooltip: React.FC<AboutTooltipProps> = ({ aboutus }) => {
+  // Create a mapping for routes
+  const routes: Record<string, string> = {
+    'About Us': '/about-us',
+    'Mission and Vission': '/mission-vision',
+    'Why Choose Burnbox Printing?': '/why-choose-burnbox', //  Route for your AboutPage
+  };
 
   return (
-    <section className="relative w-full min-h-[80vh] mt-20 flex items-center justify-center px-6">
-      {/* Right side images */}
-      <div className="flex gap-6 absolute right-10 z-20">
-        {images.map((img, index) => (
-          <motion.img
-            key={index}
-            src={img.src}
-            alt={img.title}
-            className="w-40 h-60 rounded-xl cursor-pointer shadow-lg object-cover"
-            whileHover={{ scale: 1.05 }}
-            onClick={() => setSelectedImg(index)}
-          />
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.3 }}
+      className="absolute top-full left-0 mt-2 w-48 bg-black border border-gray-700 rounded-md shadow-lg z-50"
+    >
+      <ul>
+        {aboutus.map((about, index) => (
+          <li key={index}>
+            <Link href={routes[about] || '/'} passHref>
+              <span className='block px-4 py-2 hover:bg-pink-500 hover:text-white cursor-pointer transition-colors duration-200'>
+                {about}
+              </span>
+            </Link>
+          </li>
         ))}
-      </div>
+      </ul>
+    </motion.div>
+  );
+};
 
-      {/* Animate full card section */}
-      <AnimatePresence>
-        {selectedImg !== null && (
-          <motion.div
-            key={selectedImg}
-            className="absolute inset-0 flex items-center justify-between px-16 py-10 z-10 rounded-2xl shadow-xl overflow-hidden"
-            style={{
-              backgroundImage: `url(${images[selectedImg].src})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.5 }}
-          >
-            {/* Left side text */}
-            <motion.div
-              className="bg-black/50 text-white p-6 rounded-lg max-w-md"
-              initial={{ x: -100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -100, opacity: 0 }}
-              transition={{ delay: 0.2, duration: 0.4 }}
-            >
-              <h2 className="text-4xl font-bold">{images[selectedImg].title}</h2>
-              <p className="mt-3 text-lg">{images[selectedImg].desc}</p>
-              <button className="mt-5 px-5 py-2 bg-white text-black font-semibold rounded-md shadow-md hover:bg-gray-200">
-                See More
-              </button>
-            </motion.div>
-
-            {/* Close button */}
-            <button
-              onClick={() => setSelectedImg(null)}
-              className="absolute top-5 right-5 bg-black/50 text-white px-3 py-1 rounded-md hover:bg-black/70"
-            >
-              ✕
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </section>
-  )
-}
+export default AboutTooltip;

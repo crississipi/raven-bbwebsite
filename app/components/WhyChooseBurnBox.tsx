@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import React from 'react'
 
-const AboutPage = () => {
+const WhyChooseBurnboxPage = () => {
   return (
-    <section className='bg-gray-100 text-white px-8 py-10 min-h-[55vh]'>
+    <section  className='bg-gray-100 text-white px-8 py-10 min-h-[55vh]'>
        
       <div className='max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center mt-12'>
         
@@ -17,13 +17,10 @@ const AboutPage = () => {
           />
          </div>
          {/* about descriptuon */}
-
          <div className='text-black space-y-8 text-sm md:text-base leading-relaxed'>
           <h1 className='text-3xl text-center text-pink-500 font-bold'>Why Choose burnbox Printing?</h1>
           <p className='text-black'>One-Stop Printing Partner - From business cards to massive billboards, we cover it all.
-
           </p>
-
           <p>
            Quality Meets - State-of-thee-art machines and skilled artists deliver premium output everytime.
           </p>
@@ -44,5 +41,5 @@ const AboutPage = () => {
   )
 }
 
-export default AboutPage
+export default WhyChooseBurnboxPage
 
